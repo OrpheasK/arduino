@@ -55,9 +55,9 @@ void loop() {
   if (digitalRead(6) && digitalRead(4)) note3++;
   
   //the same for one semitone down
-  if (digitalRead(7) && digitalRead(2)) note1++;
-  if (digitalRead(7) && digitalRead(3)) note2++;
-  if (digitalRead(7) && digitalRead(4)) note3++;
+  if (digitalRead(7) && digitalRead(2)) note1--;
+  if (digitalRead(7) && digitalRead(3)) note2--;
+  if (digitalRead(7) && digitalRead(4)) note3--;
 }
 
 //plays notes in array in sequence
