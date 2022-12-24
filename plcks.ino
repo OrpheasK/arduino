@@ -1,6 +1,8 @@
+//Project documentation: https://www.notion.so/Final-Project-9cec9fa9f66e49c8a6ba7b962b5365ed
 //Contains various pieces of code found in https://tigoe.github.io/SoundExamples/midi.html
 //
 //accelerometer using LIS3DH library example by Kevin Townsend
+
 const int PIEZO_PIN = A0;  // Piezo output
 #include "MIDIUSB.h"
 #include "Wire.h"
@@ -14,8 +16,6 @@ int distrd, freqrd, qrd, ndrd;
 int pta;
 int pv, mv, mpv, dv, fv, qv, ndv, ev;
 int prevpv, prevdv, prevfv, prevqv, prevndv, prevev;
-int tm = -1, tl = -1;
-int pr1 = 1, pr2 = 1;
 int p1, p2;
 
 void setup() {
