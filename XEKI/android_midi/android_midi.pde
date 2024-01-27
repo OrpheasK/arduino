@@ -47,7 +47,7 @@ void setup() {
   textFont(createFont("SansSerif", 30 * displayDensity));
 
   //set MIDI activity
-  act = this.getActivity();///////////
+  act = this.getActivity();
   context = act.getApplicationContext();
   m = (MidiManager)context.getSystemService(Context.MIDI_SERVICE);
   checkMIDI();
@@ -76,10 +76,6 @@ void draw() {
   text("Vel: " + vel, 10, 800, width, height);
   text("RAW: " + msg_midi, 10, 900, width, height);
 
-  //if (mousePressed) {///////////////
-  //if (note == 9) {
-  //  if (vel == 0) {
-
       try {
         float ap; //accelerometer value roundup using range (-45, +45)
         if (ay<-5) ap = 0.0;
@@ -99,9 +95,6 @@ void draw() {
       catch(IOException ie) {
         ie.printStackTrace();
       }
-  //  }
-  //}
-  ////}
 }
 
 void mousePressed() {
@@ -126,7 +119,7 @@ void checkMIDI() {
     println("MIDI not avaiable");
   }
 }
-
+// Credit to Pedro Oliveira
 void openMIDI(MidiDeviceInfo[] info) {
   for (int i=0; i<info.length; i++) {
     println("Device " + i);
@@ -155,15 +148,7 @@ void openMIDI(MidiDeviceInfo[] info) {
           println("could not open device");
         } else {
           println("device opened and ready for use");
-          //outputPort = device.openOutputPort(0);
-          //if (info.length==1) 
           inputPort = device.openInputPort(0);//connection with sn
-          //if (info.length==2) {
-          //  //inputPort = device.openInputPort(0);
-          //  outputPort = device.openOutputPort(0);//connection for acc trig
-
-          //  outputPort.connect(new MyReceiver());
-          //}
         }
       }
     }
@@ -176,10 +161,6 @@ class MyReceiver extends MidiReceiver {
   public void onSend(byte[] data, int offset,
     int count, long timestamp) throws IOException {
     // MIDI Data:
-    //for (int i=1; i<4; i++) {
-    //  print(data[i]);
-    //}
-    //println();
     msg_midi = data;
     note = (int)(data[2] & 0xFF);
     vel = (int)(data[3] & 0xFF);
